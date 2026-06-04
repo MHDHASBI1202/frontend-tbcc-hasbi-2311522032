@@ -1,10 +1,11 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata } from 'next'
+import { ApiProvider } from '@/lib/api-context'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'API Tester',
+  description: 'Test and manage your REST API endpoints',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -31,10 +32,12 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="bg-background">
       <body className="font-sans antialiased">
-        {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+        <ApiProvider>
+          {children}
+          {process.env.NODE_ENV === 'production' && <Analytics />}
+        </ApiProvider>
       </body>
     </html>
   )
