@@ -40,7 +40,7 @@ export function DynamicTable({
     return (
       <div className="text-center py-8">
         <p className="text-muted-foreground">
-          Please configure the API schema to view data
+          Silakan konfigurasi skema API untuk melihat data
         </p>
       </div>
     );
@@ -49,8 +49,8 @@ export function DynamicTable({
   if (data.length === 0 && !isLoading) {
     return (
       <div className="text-center py-8">
-        <p className="text-muted-foreground mb-4">No records found</p>
-        <Button onClick={onNew}>Create New Record</Button>
+        <p className="text-muted-foreground mb-4">Tidak ada catatan ditemukan</p>
+        <Button onClick={onNew}>Buat Catatan Baru</Button>
       </div>
     );
   }
@@ -60,14 +60,14 @@ export function DynamicTable({
       <div className="flex gap-2 items-center">
         <input
           type="text"
-          placeholder="Search records..."
+          placeholder="Cari catatan..."
           value={searchQuery}
           onChange={(e) => onSearch(e.target.value)}
           disabled={isLoading}
           className="flex-1 px-3 py-2 border border-input rounded-md bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
         />
         <Button onClick={onNew} disabled={isLoading}>
-          New Record
+          Catatan Baru
         </Button>
       </div>
 
@@ -84,7 +84,7 @@ export function DynamicTable({
                 </th>
               ))}
               <th className="px-4 py-2 text-left font-semibold text-foreground">
-                Actions
+                Tindakan
               </th>
             </tr>
           </thead>
@@ -92,7 +92,7 @@ export function DynamicTable({
             {isLoading ? (
               <tr>
                 <td colSpan={columns.length + 1} className="px-4 py-8 text-center">
-                  <span className="text-muted-foreground">Loading...</span>
+                  <span className="text-muted-foreground">Memuat...</span>
                 </td>
               </tr>
             ) : (
@@ -105,8 +105,8 @@ export function DynamicTable({
                     >
                       {typeof record[col] === 'boolean'
                         ? record[col]
-                          ? 'Yes'
-                          : 'No'
+                          ? 'Ya'
+                          : 'Tidak'
                         : String(record[col] ?? '-')}
                     </td>
                   ))}
@@ -127,7 +127,7 @@ export function DynamicTable({
                           onClick={() => onDelete(record.id)}
                           disabled={isLoading}
                         >
-                          Delete
+                          Hapus
                         </Button>
                       )}
                     </div>
@@ -142,7 +142,7 @@ export function DynamicTable({
       {totalPages > 1 && (
         <div className="flex items-center justify-between">
           <span className="text-sm text-muted-foreground">
-            Page {currentPage} of {totalPages} ({totalRecords} total records)
+            Halaman {currentPage} dari {totalPages} ({totalRecords} total catatan)
           </span>
           <div className="flex gap-2">
             <Button
@@ -150,14 +150,14 @@ export function DynamicTable({
               onClick={() => onPageChange(currentPage - 1)}
               disabled={currentPage === 1 || isLoading}
             >
-              Previous
+              Sebelumnya
             </Button>
             <Button
               variant="outline"
               onClick={() => onPageChange(currentPage + 1)}
               disabled={currentPage === totalPages || isLoading}
             >
-              Next
+              Selanjutnya
             </Button>
           </div>
         </div>

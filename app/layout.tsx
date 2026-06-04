@@ -4,8 +4,8 @@ import { ApiProvider } from '@/lib/api-context'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'API Tester',
-  description: 'Test and manage your REST API endpoints',
+  title: 'Tugas Besar Cloud Computing 2026',
+  description: 'Tester dan kelola endpoint REST API Anda',
   generator: 'v0.app',
   icons: {
     icon: [

@@ -14,20 +14,20 @@ export function StatusIndicator() {
           }`}
         />
         <span className="text-sm text-foreground">
-          {isConnected ? 'Connected' : 'Disconnected'}
+          {isConnected ? 'Terhubung' : 'Terputus'}
         </span>
       </div>
 
       {isConnected && activeResource && (
         <>
           <div>
-            <span className="text-xs text-muted-foreground">Records: </span>
+            <span className="text-xs text-muted-foreground">Catatan: </span>
             <span className="text-sm font-medium text-foreground">{recordCount}</span>
           </div>
 
           {lastResponseTime > 0 && (
             <div>
-              <span className="text-xs text-muted-foreground">Response: </span>
+              <span className="text-xs text-muted-foreground">Respons: </span>
               <span className="text-sm font-medium text-foreground">
                 {lastResponseTime.toFixed(2)}ms
               </span>

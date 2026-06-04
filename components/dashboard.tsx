@@ -57,9 +57,9 @@ export function Dashboard() {
       setRecords(result.data);
       api.setRecordCount(result.total);
       api.setLastResponseTime(result.responseTime);
-      addToast('Records loaded successfully', 'success');
+      addToast('Catatan berhasil dimuat', 'success');
     } catch (error: any) {
-      addToast(error.message || 'Failed to load records', 'error');
+      addToast(error.message || 'Gagal memuat catatan', 'error');
       setRecords([]);
     } finally {
       setIsLoading(false);
@@ -91,31 +91,31 @@ export function Dashboard() {
 
       if (formMode === 'create') {
         await apiService.createRecord(api.activeResource, data);
-        addToast('Record created successfully', 'success');
+        addToast('Catatan berhasil dibuat', 'success');
       } else if (editingRecord?.id) {
         await apiService.updateRecord(api.activeResource, editingRecord.id, data);
-        addToast('Record updated successfully', 'success');
+        addToast('Catatan berhasil diperbarui', 'success');
       }
 
       setIsFormOpen(false);
       await fetchRecords();
     } catch (error: any) {
-      addToast(error.message || 'Failed to save record', 'error');
+      addToast(error.message || 'Gagal menyimpan catatan', 'error');
     }
   };
 
   const handleDeleteRecord = async (id: string | number) => {
-    if (!confirm('Are you sure you want to delete this record?')) return;
+    if (!confirm('Apakah Anda yakin ingin menghapus catatan ini?')) return;
 
     if (!api.baseUrl || !api.activeResource) return;
 
     try {
       const apiService = getApiService(api.baseUrl);
       await apiService.deleteRecord(api.activeResource, id);
-      addToast('Record deleted successfully', 'success');
+      addToast('Catatan berhasil dihapus', 'success');
       await fetchRecords();
     } catch (error: any) {
-      addToast(error.message || 'Failed to delete record', 'error');
+      addToast(error.message || 'Gagal menghapus catatan', 'error');
     }
   };
 
@@ -125,9 +125,9 @@ export function Dashboard() {
       <header className="border-b border-input bg-muted sticky top-0 z-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-foreground">API Tester</h1>
+            <h1 className="text-2xl font-bold text-foreground">Tugas Besar Cloud Computing 2026</h1>
             <p className="text-sm text-muted-foreground">
-              Test and manage your API endpoints
+              Tester dan kelola endpoint REST API Anda
             </p>
           </div>
           <StatusIndicator />
@@ -141,7 +141,7 @@ export function Dashboard() {
             <div className="space-y-6">
               <div className="bg-card border border-input rounded-lg p-6">
                 <h2 className="text-lg font-semibold text-foreground mb-4">
-                  Configuration
+                  Konfigurasi
                 </h2>
                 <ApiConfiguration />
               </div>
@@ -149,7 +149,7 @@ export function Dashboard() {
               {api.isConnected && (
                 <div className="bg-card border border-input rounded-lg p-6">
                   <h2 className="text-lg font-semibold text-foreground mb-4">
-                    Schema
+                    Skema
                   </h2>
                   <SchemaEditor />
                 </div>
@@ -162,13 +162,13 @@ export function Dashboard() {
             {!api.isConnected ? (
               <div className="bg-card border border-input rounded-lg p-8 text-center">
                 <p className="text-muted-foreground mb-4">
-                  Connect to an API to get started
+                  Hubungkan ke API untuk memulai
                 </p>
               </div>
             ) : !api.activeResource ? (
               <div className="bg-card border border-input rounded-lg p-8 text-center">
                 <p className="text-muted-foreground">
-                  Select or configure a resource in the sidebar
+                  Pilih atau konfigurasi sumber daya di sidebar
                 </p>
               </div>
             ) : (
@@ -200,7 +200,7 @@ export function Dashboard() {
       <Modal
         isOpen={isFormOpen}
         onClose={() => setIsFormOpen(false)}
-        title={formMode === 'create' ? 'Create Record' : 'Edit Record'}
+        title={formMode === 'create' ? 'Buat Catatan' : 'Edit Catatan'}
       >
         <DynamicForm
           schema={api.schema}
@@ -209,7 +209,7 @@ export function Dashboard() {
           onCancel={() => setIsFormOpen(false)}
           title={
             formMode === 'create'
-              ? `Create new ${api.activeResource}`
+              ? `Buat ${api.activeResource} baru`
               : `Edit ${api.activeResource}`
           }
         />

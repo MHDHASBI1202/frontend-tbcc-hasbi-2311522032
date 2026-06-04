@@ -14,7 +14,7 @@ export function ApiConfiguration() {
 
   const handleConnect = async () => {
     if (!inputUrl.trim()) {
-      setError('Please enter a base URL');
+      setError('Silakan masukkan URL dasar');
       return;
     }
 
@@ -29,15 +29,15 @@ export function ApiConfiguration() {
       if (isConnected) {
         setBaseUrl(inputUrl);
         setIsConnected(true);
-        setSuccess('Connected successfully!');
+        setSuccess('Terhubung dengan sukses!');
         // Reset schema on new connection
         setSchema({});
       } else {
-        setError('Failed to connect to the API');
+        setError('Gagal terhubung ke API');
         setIsConnected(false);
       }
     } catch (err: any) {
-      setError(err.message || 'Connection failed');
+      setError(err.message || 'Koneksi gagal');
       setIsConnected(false);
     } finally {
       setIsLoading(false);
@@ -48,7 +48,7 @@ export function ApiConfiguration() {
     <div className="space-y-4">
       <div>
         <label className="block text-sm font-medium text-foreground mb-2">
-          API Base URL
+          URL Dasar API
         </label>
         <input
           type="text"
@@ -77,7 +77,7 @@ export function ApiConfiguration() {
         disabled={isLoading}
         className="w-full"
       >
-        {isLoading ? 'Connecting...' : 'Connect'}
+        {isLoading ? 'Menghubungkan...' : 'Hubungkan'}
       </Button>
     </div>
   );

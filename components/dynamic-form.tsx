@@ -42,7 +42,7 @@ export function DynamicForm({
     try {
       await onSubmit(formData);
     } catch (err: any) {
-      setError(err.message || 'An error occurred');
+      setError(err.message || 'Terjadi kesalahan');
     } finally {
       setIsSubmitting(false);
     }
@@ -60,7 +60,7 @@ export function DynamicForm({
             type={fieldType === 'email' ? 'email' : 'text'}
             value={value}
             onChange={(e) => handleChange(fieldName, e.target.value)}
-            placeholder={`Enter ${fieldName}`}
+            placeholder={`Masukkan ${fieldName}`}
             className="w-full px-3 py-2 border border-input rounded-md bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
             disabled={isSubmitting}
           />
@@ -73,7 +73,7 @@ export function DynamicForm({
             type="number"
             value={value}
             onChange={(e) => handleChange(fieldName, parseFloat(e.target.value) || '')}
-            placeholder={`Enter ${fieldName}`}
+            placeholder={`Masukkan ${fieldName}`}
             className="w-full px-3 py-2 border border-input rounded-md bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
             disabled={isSubmitting}
           />
@@ -117,10 +117,10 @@ export function DynamicForm({
             className="w-full px-3 py-2 border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
             disabled={isSubmitting}
           >
-            <option value="">Select {fieldName}</option>
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
+            <option value="">Pilih {fieldName}</option>
+            <option value="option1">Opsi 1</option>
+            <option value="option2">Opsi 2</option>
+            <option value="option3">Opsi 3</option>
           </select>
         );
 
@@ -152,13 +152,13 @@ export function DynamicForm({
           onClick={onCancel}
           disabled={isSubmitting}
         >
-          Cancel
+          Batal
         </Button>
         <Button
           type="submit"
           disabled={isSubmitting || Object.keys(schema).length === 0}
         >
-          {isSubmitting ? 'Saving...' : 'Save'}
+          {isSubmitting ? 'Menyimpan...' : 'Simpan'}
         </Button>
       </div>
     </form>
